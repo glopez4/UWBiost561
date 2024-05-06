@@ -1,3 +1,14 @@
+#' Generate a random graph with a partial clique
+#'
+#'Generate a random adjacency matrix with a large partial clique.
+#' @param n number of nodes in the graph
+#' @param clique_fraction the fraction of nodes (of the n nodes) that are part of the partial clique
+#' @param clique_edge_density the edge density among the nodes in the clique
+#'
+#' @return a random adjacency matrix with a partial clique - it is a symmetric matrix with only values 0 or 1 and has all 1's along its diagonal
+#' @export
+#'
+#' @examples
 generate_partial_clique <- function(n, clique_fraction, clique_edge_density)
 {
   stopifnot(n%%1 == 0, n > 0, clique_fraction >= 0, clique_fraction <= 1,
