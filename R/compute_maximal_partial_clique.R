@@ -5,7 +5,7 @@
 #' @param adj_mat a symmetric adjacency matrix consisting of only 0 and 1 with 1's along the diagonal and between 5 and 50 rows/columns
 #' @param alpha edge density
 #'
-#' @return
+#' @return vector
 #' @export
 compute_maximal_partial_clique <- function(adj_mat, alpha) {
   # check if adj_mat is a symmetric matrix with only values 0 or 1
@@ -37,6 +37,9 @@ compute_maximal_partial_clique <- function(adj_mat, alpha) {
   if(length(clique_idx) == 0) {
     clique_idx <- numeric(0)
   }
+
+  # ensure that clique_idx is unique, positive integers, and within the valid range
+  clique_idx <- unique(clique_idx)
 
   # calculate the number of edges within the identified clique
   clique_edges <- sum(adj_mat[clique_idx,clique_idx]) - length(clique_idx)
