@@ -7,8 +7,6 @@
 #'
 #' @return a random adjacency matrix with a partial clique - it is a symmetric matrix with only values 0 or 1 and has all 1's along its diagonal
 #' @export
-#'
-#' @examples
 generate_partial_clique <- function(n, clique_fraction, clique_edge_density)
 {
   stopifnot(n%%1 == 0, n > 0, clique_fraction >= 0, clique_fraction <= 1,
