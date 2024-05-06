@@ -14,11 +14,13 @@ generate_partial_clique <- function(n, clique_fraction, clique_edge_density)
   adj_mat <- matrix(0, nrow = n, ncol = n)
 
   # fill the adjacency matrix with edges within the partial clique
-  for (i in 1:m) {
-    for (j in (i + 1):m) {
-      if (i != j && runif(1) < clique_edge_density) {
-        adj_mat[i, j] <- 1
-        adj_mat[j, i] <-1
+  clique_edges <- round(clique_edge_density * m * (m-1) / 2)
+  if (clique_edges > 0) {
+    clique_nodes <- sample(1:m, clique_edges, replace = TRUE)
+    for (i in 1:clique_edges) {
+      for (j in 1:clique_edges) {
+        adj_mat[clique_nodes[i], clique_nodes[j]] <- 1
+        adj_mat[clique_nodes[j], clique_nodes[i]] <- 1
       }
     }
   }
@@ -28,7 +30,7 @@ generate_partial_clique <- function(n, clique_fraction, clique_edge_density)
 
   # fill the rest of the adjacency matrix with random edges
   for (i in 1:n) {
-    for (j in (i + 1):n) {
+    for (j in 1:n) {
       if (i > m || j > m) {
         if (adj_mat[i, j] == 0 && runif(1) < 0.5) {
           adj_mat[i, j] <- 1
