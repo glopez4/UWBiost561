@@ -24,5 +24,10 @@ simulation <- UWBiost561::generate_partial_clique(
   clique_edge_density = 0.9
 )
 
-simulation$adj_mat
+adj_mat <- simulation$adj_mat
+res <- UWBiost561::compute_maximal_partial_clique(
+  adj_mat = adj_mat,
+  alpha = 0.9
+)
+res
 ```

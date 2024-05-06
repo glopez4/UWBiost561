@@ -2,14 +2,17 @@
 % Please edit documentation in R/compute_maximal_partial_clique.R
 \name{compute_maximal_partial_clique}
 \alias{compute_maximal_partial_clique}
-\title{Compute the maximal partial clique}
+\title{Compute maximal partial clique}
 \usage{
 compute_maximal_partial_clique(adj_mat, alpha)
 }
 \arguments{
-\item{adj_mat}{a symmetric adjacency matrix consisting of only 0 and 1 with 1's along the diagonal and between 5 and 50 rows/columns}
+\item{adj_mat}{adjacency matrix}
 
 \item{alpha}{edge density}
+}
+\value{
+index numbers of nodes along with the edge density
 }
 \description{
 Computes the maximal partial clique of a given adjacency matrix
