@@ -7,12 +7,12 @@
 compute_maximal_partial_clique(adj_mat, alpha)
 }
 \arguments{
-\item{adj_mat}{adjacency matrix}
+\item{adj_mat}{adjacency matrix - symmetric matrix of 0s and 1s with 1s along the diagonal and between 5 to 50 rows/columns}
 
 \item{alpha}{edge density}
 }
 \value{
-index numbers of nodes along with the edge density
+vector with index numbers of nodes in maximal partial clique along with the edge density
 }
 \description{
 Computes the maximal partial clique of a given adjacency matrix
