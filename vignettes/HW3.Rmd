@@ -20,7 +20,7 @@ library(UWBiost561)
 set.seed(0)
 simulation <- UWBiost561::generate_partial_clique(
   n = 10,
-  clique_fraction = 0,
+  clique_fraction = 0.5,
   clique_edge_density = 0.9
 )
 
@@ -31,3 +31,21 @@ res <- UWBiost561::compute_maximal_partial_clique(
 )
 res
 ```
+4C. I was not able to fix my errors. I could not figure out how to get my function compute_maximal_partial_clique to run properly. I still do not really understand what a partial clique is even after researching... so I don't know what the expected output should be.
+```{r}
+knitr::include_graphics('/Users/gabbylopez/Documents/BIOST 561/Homework/check 1.png')
+knitr::include_graphics('/Users/gabbylopez/Documents/BIOST 561/Homework/check 2.png')
+knitr::include_graphics('/Users/gabbylopez/Documents/BIOST 561/Homework/check 3.png')
+knitr::include_graphics('/Users/gabbylopez/Documents/BIOST 561/Homework/check 4.png')
+```
+
+4D.
+```{r}
+devtools::session_info()
+```
+
+5A. I can access OpenSesame.
+
+5B. I honestly have no idea what I want to do for this final project. I will think about it this week once I complete work for other deadlines I have.
+
+6. I thought this homework was incredibly difficult, especially since (still after 10+ hours of work on this) I don't understand what a clique or maximal clique is. It was hard for me to write a function for something that I didn't understand how to compute by hand, so I had no expected output to compare it to. I like the idea of writing a function and creating/running unit tests for it - I think that is incredibly useful, but I think I would've gotten more from this assignment if the function we needed to write was a bit simpler.
