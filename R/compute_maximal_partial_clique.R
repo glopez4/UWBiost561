@@ -48,8 +48,9 @@ compute_maximal_partial_clique <- function(adj_mat, alpha) {
     # Greedily expand the clique
     while (length(neighbors) > 0) {
       new_node <- neighbors[1]
-      if (compute_edge_density(c(clique, new_node)) >= alpha && !new_node %in% clique) {
-        clique <- c(clique, new_node)
+      potential_clique <- c(clique, new_node)
+      if (compute_edge_density(potential_clique) >= alpha) {
+        clique <- potential_clique
         neighbors <- setdiff(intersect(which(adj_mat[new_node, ] == 1), neighbors), clique)
       } else {
         break
