@@ -14,7 +14,7 @@ generate_partial_clique <- function(n, clique_fraction, clique_edge_density)
 
   # calculate the size of the partial clique
   m <- round(n * clique_fraction)
-  stopifnot(m > 0, m <= n)
+  stopifnot(m >= 0, m <= n)
 
   # calculate the number of edges the partial clique should have
   min_clique_edges <- round(clique_edge_density * m * (m-1) / 2)
@@ -58,5 +58,5 @@ generate_partial_clique <- function(n, clique_fraction, clique_edge_density)
     which(sample_idx == i)
   })
 
-  list(adj_mat = adj_mat, rev_order = rev_order)
+  return(list(adj_mat = adj_mat, rev_order = rev_order))
 }
