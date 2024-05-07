@@ -9,7 +9,7 @@
 #' @export
 generate_partial_clique <- function(n, clique_fraction, clique_edge_density)
 {
-  stopifnot(n%%1 == 0, n > 0, clique_fraction >= 0, clique_fraction <= 1,
+  stopifnot(n%%1 == 0, n >= 0, clique_fraction >= 0, clique_fraction <= 1,
             clique_edge_density >= 0, clique_edge_density <= 1)
 
   # calculate the size of the partial clique
