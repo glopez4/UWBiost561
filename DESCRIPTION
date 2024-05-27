@@ -16,3 +16,4 @@ Suggests:
     tidyverse,
     ggplot2
 VignetteBuilder: knitr
+Imports: igraph

@@ -1,0 +1,16 @@
+---
+title: 'HW4'
+author: "Gabby Lopez"
+date: "2024-05-27"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{HW3}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+1. 
