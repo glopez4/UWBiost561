@@ -154,7 +154,42 @@ library(UWBiost561)
     expect_equal(result, list(clique_idx = numeric(0), edge_density = NA))
   })
 ```
+2A.
 ```{r}
+library(UWBiost561)
+set.seed(10)
+data <- UWBiost561::generate_partial_clique(n = 10, 
+                                            clique_fraction = 0.5,
+                                            clique_edge_density = 0.95)
+
+set.seed(10)
+result1 <- UWBiost561::compute_maximal_partial_clique_master(
+  adj_mat = data$adj_mat, 
+  alpha = 0.95, 
+  number = 11, 
+  time_limit = 30
+)
+result1
+
+set.seed(10)
+result2 <- UWBiost561::compute_maximal_partial_clique11(
+  adj_mat = data$adj_mat, 
+  alpha = 0.95
+)
+result2
+
+set.seed(10)
+data <- UWBiost561::generate_partial_clique(n = 49, 
+                                            clique_fraction = 0.5,
+                                            clique_edge_density = 0.95)
+set.seed(10)
+result3 <- UWBiost561::compute_maximal_partial_clique_master(
+  adj_mat = data$adj_mat, 
+  alpha = 0.95, 
+  number = 4, 
+  time_limit = 2
+)
+result3
 
 ```
 
