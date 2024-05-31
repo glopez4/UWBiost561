@@ -1,12 +1,11 @@
-#' Compute Maximal Partial Clique simulation
+#' Compute Maximal Partial Clique Simulation
 #'
-#' @param num_func number of functions we want to test
-#' @param num_trials number of trials we want to run
-#' @param clique_fraction the fraction of nodes (of the n nodes) that are part of the demo partial clique
-#' @param clique_density the edge density among the nodes in the demo clique
+#' @param num_func number of functions tested
+#' @param num_trials number of trials testing
 #'
-#' @return returns a few different outputs
+#' @return list of results for each alpha and trial
 #' @export
+library(UWBiost561)
 simulation <- function(num_func, num_trials) {
     set.seed(10)
 
@@ -25,6 +24,7 @@ simulation <- function(num_func, num_trials) {
         # generate the data
         data <- UWBiost561::generate_partial_clique(n = 10, clique_fraction=0.5, clique_edge_density=0.9)
         adj_mat <- data$adj_mat
+        print(adj_mat)
 
         # loop over the methods for this trial
         result_list <- lapply(imp_numbers, function(imp_number){
@@ -60,4 +60,6 @@ simulation <- function(num_func, num_trials) {
          alpha_vec, # save which alphas you used (for convenience)
          date_of_run, session_info,
          file = "~/simulation.RData")
+
+    return(level_trial_list)
 }

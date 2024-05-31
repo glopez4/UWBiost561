@@ -194,5 +194,5 @@ result3
 ```
 2C.
 ```{r}
-UWBiost561::simulation(4)
+UWBiost561::simulation(num_func=4, num_trials=3)
 ```

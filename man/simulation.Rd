@@ -2,22 +2,18 @@
 % Please edit documentation in R/simulation.R
 \name{simulation}
 \alias{simulation}
-\title{Compute Maximal Partial Clique simulation}
+\title{Compute Maximal Partial Clique Simulation}
 \usage{
-simulation(num_func, num_trials, clique_fraction, clique_density)
+simulation(num_func, num_trials)
 }
 \arguments{
-\item{num_func}{number of functions we want to test}
+\item{num_func}{number of functions tested}
 
-\item{num_trials}{number of trials we want to run}
-
-\item{clique_fraction}{the fraction of nodes (of the n nodes) that are part of the demo partial clique}
-
-\item{clique_density}{the edge density among the nodes in the demo clique}
+\item{num_trials}{number of trials testing}
 }
 \value{
-returns a few different outputs
+results
 }
 \description{
-Compute Maximal Partial Clique simulation
+Compute Maximal Partial Clique Simulation
 }
