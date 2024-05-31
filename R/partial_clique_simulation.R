@@ -5,8 +5,7 @@
 #'
 #' @return list of results for each alpha and trial
 #' @export
-library(UWBiost561)
-simulation <- function(num_func, num_trials) {
+partial_clique_simulation <- function(num_func, num_trials) {
     set.seed(10)
 
     imp_numbers <- 1:num_func
