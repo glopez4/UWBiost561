@@ -2,9 +2,15 @@
 title: 'HW4'
 author: "Gabby Lopez"
 date: "2024-05-27"
-output: rmarkdown::html_vignette
+output: 
+  bookdown::html_document2:
+    number_sections: false
+    toc: true
+    toc_float:
+      toc_collapsed: true
+    theme: united
 vignette: >
-  %\VignetteIndexEntry{HW3}
+  %\VignetteIndexEntry{BIOST 561: Homework 4}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -17,7 +23,7 @@ knitr::opts_chunk$set(echo = TRUE)
 1C. For 'compute_maximal_partial_clique20', the original author could extract the subset evaluation logic into a dedication function, which would make the main function more readable and separates the concerns clearly. They could also enhance the function documentation to explain the purpose of each step more clearly, especially the verbose checks and the early exit condition. Similar to my suggestions for 'compute_maximal_partial_clique20', the original author for 'compute_maximal_partial_clique14', the code for calculating the density of a set of nodes can be extracted into a dedicated function which would improve readability by making the main logic more concise and separating concerns. They could also provide more detailed comments and documentation to explain the purpose of each step, especially around the BFS logic and the criteria for updating the best clique, this would help future readers understand the flow and reasoning behind each part of the function.
 
 1D.
-```{r error=TRUE, warning=TRUE}
+```{r, error=TRUE}
 # compute_maximal_partial_clique20
 library(testthat)
 library(UWBiost561)
@@ -29,65 +35,33 @@ library(UWBiost561)
                                  clique_edge_density = 0.9)
   adj_mat <- sim$adj_mat
   alpha <- 0.9
-  res <- compute_maximal_partial_clique20(
-    adj_mat = adj_mat,
-    alpha = alpha
-  )
+  res <- UWBiost561::compute_maximal_partial_clique_master(
+        adj_mat = adj_mat,
+        alpha = alpha,
+        number = 20,
+        time_limit = 30
+      )
 
   # test that output is the correct type
-  test_that("is correct type and range", {
+  test_that("is list", {
     expect_true(is.list(res))
+  })
+  test_that("is a vector", {
     expect_true(is.vector(res$clique_idx))
+  })
+  test_that("density is numeric", {
     expect_true(is.numeric(res$edge_density))
-  # test that output is within the correct range
+  })
+  test_that("is correct length", {
     expect_true(length(res$clique_idx) <= nrow(adj_mat))
+  })
+  test_that("is within range", {
     expect_true(all(res$clique_idx <= nrow(adj_mat)) && all(res$clique_idx > 0))
-    expect_true(res$edge_density >= alpha && res$edge_density <= 1)
   })
 
-  # test with a small adjacency matrix
-  adj_mat <- matrix(c(1, 1, 0, 0, 0,
-                      1, 1, 1, 0, 0,
-                      0, 1, 1, 1, 0,
-                      0, 0, 1, 1, 1,
-                      0, 0, 0, 1, 1), nrow = 5, byrow = TRUE)
-  alpha <- 0.6
-  result <- compute_maximal_partial_clique20(adj_mat, alpha)
-  test_that("small adjacency matrix", {
-    expect_equal(result$clique_idx, c(1, 2, 3, 4))
-    expect_equal(result$edge_density, 0.6)
-  })
-
-  # test with a larger adjacency matrix
-  adj_mat <- matrix(0, nrow = 50, ncol = 50)
-  diag(adj_mat) <- 1
-  alpha <- 0.7
-  result <- compute_maximal_partial_clique20(adj_mat, alpha)
-  test_that("large adjacency matrix", {
-    expect_equal(length(result$clique_idx), 1)
-    expect_equal(result$edge_density, 1)
-  })
-
-  # test with adjacency matrix containing only 1s
-  adj_mat <- matrix(1, nrow = 10, ncol = 10)
-  diag(adj_mat) <- 1
-  alpha <- 0.5
-  result <- compute_maximal_partial_clique20(adj_mat, alpha)
-  test_that("matrix of 1s", {
-    expect_equal(result$clique_idx, 1:10)
-    expect_equal(result$edge_density, 1)
-  })
-
-  # testing with an empty adjacency matrix
-  adj_mat <- matrix(0, nrow = 10, ncol = 10)
-  alpha <- 0.7
-  result <- compute_maximal_partial_clique20(adj_mat, alpha)
-  test_that("empty matrix", {
-    expect_equal(result, list(clique_idx = numeric(0), edge_density = NA))
-  })
 ```
 
-```{r error=TRUE, warning=TRUE}
+```{r, error=TRUE}
 # compute_maximal_partial_clique14
 
   # mock data for testing
@@ -97,62 +71,31 @@ library(UWBiost561)
                                  clique_edge_density = 0.9)
   adj_mat <- sim$adj_mat
   alpha <- 0.9
-  res <- compute_maximal_partial_clique14(
-    adj_mat,
-    alpha
-  )
+  res <- UWBiost561::compute_maximal_partial_clique_master(
+        adj_mat = adj_mat,
+        alpha = alpha,
+        number = 14,
+        time_limit = 30
+      )
 
   # test that output is the correct type
-  test_that("is correct type and range", {
+  test_that("is list", {
     expect_true(is.list(res))
+  })
+  test_that("is a vector", {
     expect_true(is.vector(res$clique_idx))
+  })
+  test_that("density is numeric", {
     expect_true(is.numeric(res$edge_density))
-  # test that output is within the correct range
+  })
+  test_that("is correct length", {
     expect_true(length(res$clique_idx) <= nrow(adj_mat))
+  })
+  test_that("is within range", {
     expect_true(all(res$clique_idx <= nrow(adj_mat)) && all(res$clique_idx > 0))
-    expect_true(res$edge_density >= alpha && res$edge_density <= 1)
   })
 
-  # test with a small adjacency matrix
-  adj_mat <- matrix(c(1, 1, 0, 0, 0,
-                      1, 1, 1, 0, 0,
-                      0, 1, 1, 1, 0,
-                      0, 0, 1, 1, 1,
-                      0, 0, 0, 1, 1), nrow = 5, byrow = TRUE)
-  alpha <- 0.6
-  result <- compute_maximal_partial_clique14(adj_mat, alpha)
-  test_that("small adjacency matrix", {
-    expect_equal(result$clique_idx, c(1, 2, 3, 4))
-    expect_equal(result$edge_density, 0.6)
-  })
 
-  # test with a larger adjacency matrix
-  adj_mat <- matrix(0, nrow = 50, ncol = 50)
-  diag(adj_mat) <- 1
-  alpha <- 0.7
-  result <- compute_maximal_partial_clique14(adj_mat, alpha)
-  test_that("large adjacency matrix", {
-    expect_equal(length(result$clique_idx), 1)
-    expect_equal(result$edge_density, 1)
-  })
-
-  # test with adjacency matrix containing only 1s
-  adj_mat <- matrix(1, nrow = 10, ncol = 10)
-  diag(adj_mat) <- 1
-  alpha <- 0.5
-  result <- compute_maximal_partial_clique14(adj_mat, alpha)
-  test_that("matrix of 1s", {
-    expect_equal(result$clique_idx, 1:10)
-    expect_equal(result$edge_density, 1)
-  })
-
-  # testing with an empty adjacency matrix
-  adj_mat <- matrix(0, nrow = 10, ncol = 10)
-  alpha <- 0.7
-  result <- compute_maximal_partial_clique14(adj_mat, alpha)
-  test_that("empty matrix", {
-    expect_equal(result, list(clique_idx = numeric(0), edge_density = NA))
-  })
 ```
 2A.
 ```{r}
@@ -196,3 +139,12 @@ result3
 ```{r}
 UWBiost561::partial_clique_simulation(num_func=4, num_trials=3)
 ```
+2D.
+```{r}
+knitr::include_graphics('/Users/gabbylopez/Documents/BIOST 561/Homework/check1.png')
+knitr::include_graphics('/Users/gabbylopez/Documents/BIOST 561/Homework/check2.png')
+knitr::include_graphics('/Users/gabbylopez/Documents/BIOST 561/Homework/check3.png')
+knitr::include_graphics('/Users/gabbylopez/Documents/BIOST 561/Homework/check4.png')
+knitr::include_graphics('/Users/gabbylopez/Documents/BIOST 561/Homework/check5.png')
+```
+

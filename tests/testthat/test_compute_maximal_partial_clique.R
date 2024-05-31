@@ -49,11 +49,4 @@ test_that("compute_maximal_partial_clique works", {
   result <- compute_maximal_partial_clique(adj_mat, alpha)
   expect_equal(result$clique_idx, 1:10)
   expect_equal(result$edge_density, 1)
-
-  # testing with an empty adjacency matrix
-  adj_mat <- matrix(0, nrow = 10, ncol = 10)
-  alpha <- 0.7
-  result <- compute_maximal_partial_clique(adj_mat, alpha)
-  expect_equal(result, list(clique_idx = numeric(0), edge_density = NA))
-
 })

@@ -16,4 +16,8 @@ Suggests:
     tidyverse,
     ggplot2
 VignetteBuilder: knitr
+options:
+  knitr::opts_chunk$set(
+    devtools.desc.VignetteTimeout = 120
+  )
 Imports: igraph
