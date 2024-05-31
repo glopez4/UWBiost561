@@ -23,7 +23,6 @@ partial_clique_simulation <- function(num_func, num_trials) {
         # generate the data
         data <- UWBiost561::generate_partial_clique(n = 10, clique_fraction=0.5, clique_edge_density=0.9)
         adj_mat <- data$adj_mat
-        print(adj_mat)
 
         # loop over the methods for this trial
         result_list <- lapply(imp_numbers, function(imp_number){
