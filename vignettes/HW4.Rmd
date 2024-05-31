@@ -192,4 +192,7 @@ result3 <- UWBiost561::compute_maximal_partial_clique_master(
 result3
 
 ```
-
+2C.
+```{r}
+UWBiost561::simulation(4)
+```
