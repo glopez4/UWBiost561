@@ -192,7 +192,7 @@ result3 <- UWBiost561::compute_maximal_partial_clique_master(
 result3
 
 ```
-2C.
+2B. The simulation is to evaluate and compare the performance of multiple functions designed to compute the maximal partial clique in a graph. The performance will be assessed across different values of edge density threshold ('alpha') and across multiple trials to ensure robustness. It uses the function 'generate_partial_clique' to generate random graphs. The random graphs are varied across different "levels" of the analysis by changing the edge density threshold ('alpha') and the random seed for each trial. By following this plan, you will be able to systematically evaluate the performance of different implementations of the maximal partial clique computation function across different conditions, ensuring a thorough and robust analysis.
 ```{r}
 UWBiost561::partial_clique_simulation(num_func=4, num_trials=3)
 ```

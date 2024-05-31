@@ -32,7 +32,7 @@ partial_clique_simulation <- function(num_func, num_trials) {
             adj_mat = adj_mat,
             alpha = alpha,
             number = imp_number,
-            time_limit = 30
+            time_limit = 20
           )
 
 
