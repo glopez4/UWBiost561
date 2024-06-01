@@ -148,3 +148,5 @@ knitr::include_graphics('/Users/gabbylopez/Documents/BIOST 561/Homework/check4.p
 knitr::include_graphics('/Users/gabbylopez/Documents/BIOST 561/Homework/check5.png')
 ```
 
+3. I honestly have nothing for this question. It took me so long just to get to this step and just like the last homework, I still have no concept of what I'm supposed to be checking or simulating. I ran it in Bayes and it ran successfully but I just don't understand my output or what my output should be... This is way more computer science-y than my little math brain can handle and I can't justify spending more time on this after working on it for 2.5 days since it's a credit/no credit class and I have other assignments and final projects for other classes. I really tried my best! Sorry - I just can't spend more time on this.
+

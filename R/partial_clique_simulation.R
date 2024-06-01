@@ -49,6 +49,7 @@ partial_clique_simulation <- function(num_func, num_trials) {
       return(trial_list)
     })
     names(level_trial_list) <- paste0("alpha:", alpha_vec)
+    return(level_trial_list)
 
     # it's always useful to save the date and R session info
     date_of_run <- Sys.time()
