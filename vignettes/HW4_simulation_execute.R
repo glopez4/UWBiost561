@@ -1,0 +1,2 @@
+library(UWBiost561)
+partial_clique_simulation(25, 5)
