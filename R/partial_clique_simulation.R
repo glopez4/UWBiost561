@@ -57,5 +57,5 @@ partial_clique_simulation <- function(num_func, num_trials) {
     save(level_trial_list, # save your results
          alpha_vec, # save which alphas you used (for convenience)
          date_of_run, session_info,
-         file = "~/simulation.RData")
+         file = "~/HW4_simulation.RData")
 }
