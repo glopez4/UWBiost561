@@ -1,0 +1,9 @@
+pandoc: 3.1.11
+pkgdown: 2.0.9
+pkgdown_sha: ~
+articles: {}
+last_built: 2024-06-07T05:53Z
+urls:
+  reference: https://glopez4.github.io/UWBiost561/reference
+  article: https://glopez4.github.io/UWBiost561/articles
+
